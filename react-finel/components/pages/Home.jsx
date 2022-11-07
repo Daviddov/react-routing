@@ -1,12 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom";
+import NavBar from "../NavBar";
+function Home({user ,setUser}) {
 
-function Home({user}) {
-    const { name } = user
 
     return (
         <div>
-            {/* <NavBar /> */}
-            {name ? <h1>{`wellcome ${name}`}</h1> : <Navigate to={'Login'} />}
+        
+            <NavBar setUser={setUser}/>
+            {user ? <h4>{`wellcome ${user}`}</h4> : <Navigate to={'Login'} />}
             <Outlet />
 
         </div>
