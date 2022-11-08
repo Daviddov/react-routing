@@ -23,9 +23,9 @@ function Login({ setUser }) {
                     const lat = element.address.geo.lat
                     console.log(password.value.lenght);
                     if (lat.endsWith(password.value)) {
-                        setUser(name.value)
-                        localStorage.setItem('user',name.value)
-                        console.log('login',name.value);
+                        setUser(element)
+                        localStorage.setItem('user', element)
+                        console.log('login',element);
 
                         navigete('/')
                         
@@ -40,7 +40,7 @@ function Login({ setUser }) {
         <h1>Login</h1>
         <form onSubmit={hendleSubmit}>
             <input type="text" placeholder="Name" name="name" />
-            <input type="password" placeholder="password" name="password" />
+            <input type="password" placeholder="password" name="password" maxLength="4" minLength={"4"}/>
             <input type="submit" value={'Login'} />
         </form>
     </div>

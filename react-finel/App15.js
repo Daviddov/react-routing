@@ -7,6 +7,7 @@ import Login from './components/pages/Login';
 import Todos from './components/pages/Todos';
 import Posts from './components/pages/Posts';
 import Albums from './components/pages/Albums';
+import Post from './components/pages/Post';
 
 function App15() {
     const [user, setUser] = useState()
@@ -14,12 +15,12 @@ function App15() {
         <BrowserRouter>
             <Routes>
                 <Route path='Login' element={<Login setUser={setUser} />} />
-                <Route path='/' element={<Home user={user} setUser={setUser} />} >
-
-                    <Route path='Info' element={<Info />} />
-                    <Route path='Todos' element={<Todos />} />
-                    <Route path='Posts' element={<Posts />} />
-                    <Route path='Albums' element={<Albums />} />
+                <Route path='/' element={<Home user={user} setUser={setUser} />} > 
+                    <Route path='Info' element={<Info user={user}/>} />
+                    <Route path='Todos' element={<Todos user={user} />} />
+                    <Route path='Posts' element={<Posts user={user}/>} />
+                    <Route path='Posts/:PostId' element={<Post user={user}/>} />
+                    <Route path='Albums' element={<Albums user={user}/>} />
                     <Route path='*' element={<Error />} />
                 </Route>
 
