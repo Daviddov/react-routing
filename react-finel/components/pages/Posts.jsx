@@ -22,14 +22,14 @@ const navigete = useNavigate()
     return ( 
         <Fragment>
             <h1>Posts</h1>
-            <Outlet /> 
-            {data && data.map((todo) =>
-                <ListItem key={todo.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            {data && data.map((post) =>
+                <ListItem key={post.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
                     <ListItemButton >
-                        <ListItemText  onClick={()=>hendleClick(todo.id)} primary={`${todo.id}.${todo.title}`} />
+                        <ListItemText  onClick={()=>hendleClick(post.id)} primary={`${post.id}.${post.title}`} />
                     </ListItemButton>
                 </ListItem>
             )}
+            <Outlet /> 
            
         
         </Fragment>

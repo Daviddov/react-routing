@@ -1,29 +1,44 @@
+import { Button, DialogContent, DialogContentText, DialogTitle, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Fragment, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import ResponsiveDialog from "../Dialog";
 
 function Post() {
     const [post, setPost] = useState('')
-    const { PostId } = useParams();
-   
-    
+    const { postId } = useParams();
+    const navigete = useNavigate()
+
     console.log(post);
 
     const fetchPost = useMemo(async () => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts/' + PostId)
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
         const json = await response.json();
         setPost(json)
         console.log(json)
-    }, [])
+    }, [postId])
+
+
 
     return (<Fragment >
-        <h1>My Post</h1>
-<ResponsiveDialog post={post} />
-{/* <div style={{display:'inline-block', width: 1000 , margin: 'auto'}}>
-    <h2>{post.id}. {post.title}</h2>
-     <h3>{post.body}</h3>
-</div> */}
-     
+
+
+        <DialogTitle>
+            {post.title}
+        </DialogTitle>
+        <DialogContent>
+            <DialogContentText>
+                {post.body}
+            </DialogContentText>
+        </DialogContent>
+
+        <Link to={'/Posts'} autoFocus>
+            Close post
+        </Link><br />
+        <Link autoFocus to={'Comments'}>
+            Show comments
+        </Link>
+        <Outlet />
+
     </Fragment>);
 }
 

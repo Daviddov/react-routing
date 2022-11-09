@@ -54,11 +54,11 @@ function Todos({ user }) {
                 </FormControl>
             </Box>
 
-            {data && data.map((todos) =>
-                <ListItem key={todos.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            {data && data.map((todo) =>
+                <ListItem key={todo.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
                     <ListItemButton>
-                        <ListItemText primary={`${todos.id}.${todos.title}`} />
-                        <Checkbox  checked={todos.completed} />
+                        <ListItemText primary={`${todo.id}.${todo.title}`} />
+                        <Checkbox  checked={todo.completed} />
                     </ListItemButton>
                 </ListItem>
             )}

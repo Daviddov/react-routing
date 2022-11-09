@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function ResponsiveDialog({ post }) {
   const [open, setOpen] = React.useState(true);
@@ -15,7 +16,15 @@ export default function ResponsiveDialog({ post }) {
   const theme = useTheme();
   const navigete = useNavigate()
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
+  const [postId, setPostId] = useState()
+  const [comments, setComments] = React.useState('')
+  
+  const fetchComments = React.useMemo(async () => {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/post/${1}/comments/`)
+    const json = await response.json();
+    setComments(json)
+    console.log('comments',json)
+}, [postId])
 
   const handleClose = () => {
     setOpen(false);
@@ -24,7 +33,7 @@ export default function ResponsiveDialog({ post }) {
 
   const handleComments = () => {
     setDialogOpen(true)
-    console.log('comments');
+    console.log('comments', comments[0]);
   }
 
   return (
@@ -53,11 +62,11 @@ export default function ResponsiveDialog({ post }) {
             onClose={handleClose}
           >
             <DialogTitle>
-              ContentText
+            comment name
             </DialogTitle>
             <DialogContent>
               <DialogContentText>
-                ContentText
+              comment body
               </DialogContentText>
             </DialogContent>
           </Dialog>
