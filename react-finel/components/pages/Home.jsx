@@ -8,6 +8,7 @@ function Home({user ,setUser}) {
         
             <NavBar setUser={setUser}/>
             {user ? <h4>{`wellcome ${user.name}`}</h4> : <Navigate to={'Login'} />}
+          
             <Outlet />
 
         </div>

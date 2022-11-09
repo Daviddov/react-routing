@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { useState } from "react";
@@ -27,7 +28,7 @@ function Login({ setUser }) {
                         localStorage.setItem('user', element)
                         console.log('login',element);
 
-                        navigete('/')
+                        navigete('/Info')
                         
                     }else {console.log('worng password');}
                 }
@@ -39,9 +40,21 @@ function Login({ setUser }) {
     return (<div>
         <h1>Login</h1>
         <form onSubmit={hendleSubmit}>
+        {/* <TextField label="Name" variant="filled" name="name"/>
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          name="password"
+          maxLength="4"
+          minLength="4"
+        /> */}
+
             <input type="text" placeholder="Name" name="name" />
             <input type="password" placeholder="password" name="password" maxLength="4" minLength={"4"}/>
-            <input type="submit" value={'Login'} />
+           <Button type="submit">Login</Button>
+            {/* <input type="submit" value={'Login'} /> */}
         </form>
     </div>
     );
