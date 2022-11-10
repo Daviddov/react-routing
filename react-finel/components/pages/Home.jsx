@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import NavBar from "../NavBar";
+import NavTabs from "../NavStyled";
 function Home({user ,setUser}) {
 
 
@@ -7,8 +8,7 @@ function Home({user ,setUser}) {
         <div>
         
             {user ? <h4>{`wellcome ${user.name}`}</h4> : <Navigate to={'Login'} />}
-            <NavBar setUser={setUser}/>
-          
+            <NavTabs setUser={setUser} />
             <Outlet />
 
         </div>

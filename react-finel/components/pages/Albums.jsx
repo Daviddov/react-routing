@@ -1,10 +1,12 @@
-import { ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Button, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Fragment } from "react";
 import { useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 
 function Albums({ user }) {
     const [albums, setAlbums] = useState('')
+    user = JSON.parse(localStorage.getItem('user')) 
+    const navigete = useNavigate()
 
     const fetchPost = useMemo(async () => {
         const response = await fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/albums`)
@@ -14,6 +16,10 @@ function Albums({ user }) {
         console.log(json)
     }, [])
 
+    const hendleClick = (id) => {
+        navigete(`${id}`)  
+    }
+
     return (
         <Fragment>
 
@@ -22,6 +28,9 @@ function Albums({ user }) {
                 <ListItem key={album.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
                     <ListItemButton >
                         <ListItemText primary={`${index+1}. ${album.title}`} />
+                        <Button autoFocus onClick={() => hendleClick(album.id)}>
+            Show photos
+        </Button>
                     </ListItemButton>
                 </ListItem>
 

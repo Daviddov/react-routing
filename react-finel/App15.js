@@ -9,6 +9,7 @@ import Posts from './components/pages/Posts';
 import Albums from './components/pages/Albums';
 import Post from './components/pages/Post';
 import Comments from './components/pages/Comments';
+import Photos from './components/pages/Photos';
 
 function App15() {
     const [user, setUser] = useState()
@@ -18,15 +19,15 @@ function App15() {
                 <Route path='Login' element={<Login setUser={setUser} />} />
                 <Route path='/' element={<Home user={user} setUser={setUser} />} >
                     <Route path='Info' element={<Info user={user} />} />
-          
-                    <Route path='Todos' element={<Todos user={user} />} />
-                    
+                    <Route path='Todos' element={<Todos user={user} />} /> 
                     <Route path='Posts' element={<Posts user={user} />} >
                         <Route path=':postId' element={<Post />} >
                             <Route path='Comments' element={<Comments  />}/>
                         </Route>
                     </Route>
                     <Route path='Albums' element={<Albums user={user} />} />
+                    <Route path='Albums/:albumId' element={<Photos user={user}/>}/>
+                    
                     <Route path='*' element={<Error />} />
                 </Route>
 

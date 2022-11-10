@@ -25,7 +25,7 @@ function Login({ setUser }) {
                     console.log(password.value.lenght);
                     if (lat.endsWith(password.value)) {
                         setUser(element)
-                        localStorage.setItem('user', element)
+                        localStorage.setItem('user', JSON.stringify(element))
                         console.log('login',element);
 
                         navigete('/Info')
