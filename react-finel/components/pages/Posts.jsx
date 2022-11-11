@@ -19,11 +19,12 @@ function Posts({ user }) {
         navigete(`${id}`)
     }
 
+    
     return (
         <Fragment>
             <h1>Posts</h1>
             {data && data.map((post) =>
-                <ListItem key={post.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
+                <ListItem key={post.id} component="div" disablePadding sx={{margin:'auto' , width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
                     <ListItemButton >
                         <ListItemText onClick={() => hendleClick(post.id)} primary={`${post.id}.${post.title}`} />
                     </ListItemButton>

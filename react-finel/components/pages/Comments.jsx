@@ -16,7 +16,7 @@ function Comments() {
     return (
         <Fragment>
 {comments && comments.map((comment) => 
-  <ListItem key={comment.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
+  <ListItem key={comment.id} component="div" disablePadding sx={{margin:'auto' , width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
   <ListItemButton >
       <ListItemText primary={`${comment.body}
      name: ${comment.name} 

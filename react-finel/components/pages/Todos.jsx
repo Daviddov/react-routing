@@ -38,7 +38,7 @@ function Todos({ user }) {
         <div >
             <h1>Todos</h1>
 
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ margin:'auto', minWidth: 120,width: '100%', maxWidth: 600, }}>
                 <FormControl fullWidth>
                     <InputLabel>sort</InputLabel>
                     <Select
@@ -55,7 +55,7 @@ function Todos({ user }) {
             </Box>
 
             {data && data.map((todo) =>
-                <ListItem key={todo.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
+                <ListItem key={todo.id} component="div" disablePadding sx={{ margin:'auto' ,width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
                     <ListItemButton>
                         <ListItemText primary={`${todo.id}.${todo.title}`} />
                         <Checkbox  checked={todo.completed} />

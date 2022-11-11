@@ -1,4 +1,4 @@
-import {  ImageList, ImageListItem } from "@mui/material";
+import {  ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { Fragment } from "react";
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -19,20 +19,26 @@ function Photos() {
     return (
         <Fragment>
             <h1>Photos</h1>
+            <ImageList sx={{margin:'auto', width: 650, height: 650 }}>
+      {photos && photos.map((item) => (
+        <ImageListItem key={item.img} sx={{ width: 300, height: 300 }}>
+          <img
+          
+            src={`${item.thumbnailUrl}?w=248&fit=crop&auto=format`}
+            srcSet={`${item.thumbnailUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.title}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title={item.title}
 
-            <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-                {photos && photos.map((item, index) => (
-                    <ImageListItem key={index}>
-                        <img 
-                            src={`${item.thumbnailUrl}?w=164&h=164&fit=crop&auto=format`}
-                            srcSet={`${item.thumbnailUrl}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                            alt={item.title}
-                            loading="lazy"
-                        />
-                    </ImageListItem>
-                ))}
-            </ImageList>
-            <Link to={'/albums'}>go back</Link>
+            position="below"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+
+            
         </Fragment>
     );
 

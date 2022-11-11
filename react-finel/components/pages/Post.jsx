@@ -1,7 +1,6 @@
 import { Button, DialogContent, DialogContentText, DialogTitle, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Fragment, useMemo, useState } from "react";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
-import ResponsiveDialog from "../Dialog";
 
 function Post() {
     const [post, setPost] = useState('')

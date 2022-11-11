@@ -25,7 +25,7 @@ function Albums({ user }) {
 
             <h1>Albums</h1>
             {albums && albums.map((album, index) =>
-                <ListItem key={album.id} component="div" disablePadding sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
+                <ListItem key={album.id} component="div" disablePadding sx={{margin:'auto' ,width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
                     <ListItemButton >
                         <ListItemText primary={`${index+1}. ${album.title}`} />
                         <Button autoFocus onClick={() => hendleClick(album.id)}>
